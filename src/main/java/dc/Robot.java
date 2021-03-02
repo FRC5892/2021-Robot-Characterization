@@ -101,8 +101,8 @@ public class Robot extends TimedRobot {
     // setup Brushed spark
     CANSparkMax motor = new CANSparkMax(port, MotorType.kBrushed);
    // motor.restoreFactoryDefaults(); 
-    motor.setIdleMode(IdleMode.kBrake);  
-    motor.setInverted(false);
+   //motor.setIdleMode(IdleMode.kBrake);  
+   //motor.setInverted(false);
     
     // setup encoder if motor isn't a follower
     if (side != Sides.FOLLOWER) {
@@ -157,19 +157,19 @@ public class Robot extends TimedRobot {
     CANSparkMax leftMotor = setupCANSparkMax(1, Sides.LEFT, false);
 
     CANSparkMax leftFollowerID2 = setupCANSparkMax(2, Sides.FOLLOWER, false);
-    leftFollowerID2.follow(leftMotor, false);
+    leftFollowerID2.follow(leftMotor);
         
     
     CANSparkMax leftFollowerID3 = setupCANSparkMax(3, Sides.FOLLOWER, false);
-    leftFollowerID3.follow(leftMotor, false);
+    leftFollowerID3.follow(leftMotor);
         
     
 
     CANSparkMax rightMotor = setupCANSparkMax(4, Sides.RIGHT, false);
     CANSparkMax rightFollowerID5 = setupCANSparkMax(5, Sides.FOLLOWER, false);
-    rightFollowerID5.follow(rightMotor, false);
+    rightFollowerID5.follow(rightMotor);
     CANSparkMax rightFollowerID6 = setupCANSparkMax(6, Sides.FOLLOWER, false);
-    rightFollowerID6.follow(rightMotor, false);
+    rightFollowerID6.follow(rightMotor);
     drive = new DifferentialDrive(leftMotor, rightMotor);
     drive.setDeadband(0);
 
