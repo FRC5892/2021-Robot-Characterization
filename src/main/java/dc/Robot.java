@@ -98,17 +98,17 @@ public class Robot extends TimedRobot {
   // methods to create and setup motors (reduce redundancy)
   public CANSparkMax setupCANSparkMax(int port, Sides side, boolean inverted) {
     // create new motor and set neutral modes (if needed)
-    // setup Brushed spark
-    CANSparkMax motor = new CANSparkMax(port, MotorType.kBrushed);
-   // motor.restoreFactoryDefaults(); 
-   //motor.setIdleMode(IdleMode.kBrake);  
-   //motor.setInverted(false);
+    // setup Brushless spark
+    CANSparkMax motor = new CANSparkMax(port, MotorType.kBrushless);
+    motor.restoreFactoryDefaults(); 
+    motor.setIdleMode(IdleMode.kBrake);  
+    motor.setInverted(inverted);
     
     // setup encoder if motor isn't a follower
     if (side != Sides.FOLLOWER) {
     
       
-      CANEncoder encoder = motor.getEncoder(EncoderType.kQuadrature, ENCODER_EDGES_PER_REV);
+      CANEncoder encoder = motor.getEncoder();
 
 
 
@@ -119,7 +119,6 @@ public class Robot extends TimedRobot {
         // set right side methods = encoder methods
 
 
-        encoder.setInverted(false);
         rightEncoderPosition = ()
           -> encoder.getPosition() * encoderConstant;
         rightEncoderRate = ()
@@ -127,7 +126,6 @@ public class Robot extends TimedRobot {
 
         break;
       case LEFT:
-        encoder.setInverted(false);
         leftEncoderPosition = ()
           -> encoder.getPosition() * encoderConstant;
         leftEncoderRate = ()
@@ -157,19 +155,19 @@ public class Robot extends TimedRobot {
     CANSparkMax leftMotor = setupCANSparkMax(1, Sides.LEFT, false);
 
     CANSparkMax leftFollowerID2 = setupCANSparkMax(2, Sides.FOLLOWER, false);
-    leftFollowerID2.follow(leftMotor);
+    leftFollowerID2.follow(leftMotor, false);
         
     
     CANSparkMax leftFollowerID3 = setupCANSparkMax(3, Sides.FOLLOWER, false);
-    leftFollowerID3.follow(leftMotor);
+    leftFollowerID3.follow(leftMotor, false);
         
     
 
     CANSparkMax rightMotor = setupCANSparkMax(4, Sides.RIGHT, false);
     CANSparkMax rightFollowerID5 = setupCANSparkMax(5, Sides.FOLLOWER, false);
-    rightFollowerID5.follow(rightMotor);
+    rightFollowerID5.follow(rightMotor, false);
     CANSparkMax rightFollowerID6 = setupCANSparkMax(6, Sides.FOLLOWER, false);
-    rightFollowerID6.follow(rightMotor);
+    rightFollowerID6.follow(rightMotor, false);
     drive = new DifferentialDrive(leftMotor, rightMotor);
     drive.setDeadband(0);
 
