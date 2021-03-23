@@ -1,0 +1,9 @@
+[
+  {
+    "artifact": "frcJava (in project Shooter Characterization)",
+    "target": "roborio",
+    "debugfile": "frcJava_roborio.debugconfig",
+    "project": "Shooter Characterization",
+    "language": "java"
+  }
+]
