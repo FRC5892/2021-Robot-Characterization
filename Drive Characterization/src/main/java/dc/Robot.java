@@ -152,7 +152,7 @@ public class Robot extends TimedRobot {
     stick = new Joystick(0);
     
     // create left motor
-    CANSparkMax leftMotor = setupCANSparkMax(1, Sides.LEFT, false);
+    CANSparkMax leftMotor = setupCANSparkMax(1, Sides.LEFT, true);
 
     CANSparkMax leftFollowerID2 = setupCANSparkMax(2, Sides.FOLLOWER, false);
     leftFollowerID2.follow(leftMotor, false);
@@ -163,7 +163,7 @@ public class Robot extends TimedRobot {
         
     
 
-    CANSparkMax rightMotor = setupCANSparkMax(4, Sides.RIGHT, false);
+    CANSparkMax rightMotor = setupCANSparkMax(4, Sides.RIGHT, true);
     CANSparkMax rightFollowerID5 = setupCANSparkMax(5, Sides.FOLLOWER, false);
     rightFollowerID5.follow(rightMotor, false);
     CANSparkMax rightFollowerID6 = setupCANSparkMax(6, Sides.FOLLOWER, false);
