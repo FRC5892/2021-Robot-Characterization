@@ -177,7 +177,7 @@ public class Robot extends TimedRobot {
 
     // Note that the angle from the NavX and all implementors of WPILib Gyro
     // must be negated because getAngle returns a clockwise positive angle
-    AHRS navx = new AHRS();
+    AHRS navx = new AHRS(SerialPort.Port.kMXP);
     gyroAngleRadians = () -> -1 * Math.toRadians(navx.getAngle());
 
     // Set the update rate instead of using flush because of a ntcore bug

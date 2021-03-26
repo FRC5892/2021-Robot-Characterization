@@ -101,7 +101,7 @@ public class Robot extends TimedRobot {
     // setup Brushless spark
     CANSparkMax motor = new CANSparkMax(port, MotorType.kBrushless);
     motor.restoreFactoryDefaults(); 
-    motor.setIdleMode(IdleMode.kBrake);  
+    motor.setIdleMode(IdleMode.kCoast);  
     motor.setInverted(inverted);
     
     // setup encoder if motor isn't a follower
