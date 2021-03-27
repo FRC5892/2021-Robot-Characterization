@@ -247,8 +247,8 @@ public class Robot extends TimedRobot {
     double leftPosition = leftEncoderPosition.get();
     double leftRate = leftEncoderRate.get();
 
-    double rightPosition = rightEncoderPosition.get();
-    double rightRate = rightEncoderRate.get();
+    double rightPosition = -rightEncoderPosition.get();
+    double rightRate = -rightEncoderRate.get();
 
     double battery = RobotController.getBatteryVoltage();
     double motorVolts = battery * Math.abs(priorAutospeed);
